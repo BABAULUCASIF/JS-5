@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <style>
+	.dark {
+	    color: white;
+	    background-color:  black;
+	}
+    </style>
+    <script>
+	window.onload = inicio;
+
+	function inicio() {
+	    let botao = document.getElementById('btnGera');
+	    botao.addEventListener('click', gera);
+        let btnMarca = document.getElementById('btnMarca');
+        btnMarca.addEventListener('click', marca)
+	}
+	function gera() {
+	    let tabela = document.getElementsByTagName('table')[0];
+	    let elementos = '';
+
+	    elementos += '<tr>';
+	    for(var i = 0; i < 31; i++) {
+		if( i % 7 == 0 ) {
+		    elementos += '</tr><tr>';
+		} 
+        let j = i+1
+		elementos += '<td id=' + i + '>' + j + '</td>';
+	    }
+	    elementos += '</tr>';
+	    tabela.innerHTML = elementos;
+	 }
+     function marca(){
+	    let dias = parseInt(document.getElementById('numero').value)
+        document.getElementById((dias - 1).toString()).className = 'dark';
+     }
+    </script>
+</head>
+<body>
+    <table>
+
+    </table>
+    <input type="button" value="Gera" id="btnGera"><br>
+    <label for="">Dia:</label>
+    <input type="text" id="numero" value="0">
+    <input type="button" value="Marca" id="btnMarca">
+</body>
+</html>
